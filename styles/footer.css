@@ -1,0 +1,40 @@
+footer {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+footer > p:first-of-type {
+  text-align: center;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+}
+
+footer div {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+}
+
+footer i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.logo {
+  padding: 2rem;
+  height: 8rem;
+}
+
+.signature {
+  height: 10vh;
+  width: min-content;
+}
+
+.uni-images {
+  height: 10vh;
+}

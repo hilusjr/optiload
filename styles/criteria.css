@@ -1,0 +1,47 @@
+.criteria-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.criterion-element {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.criteria-section {
+  display: none;
+}
+
+.criterion-element div:nth-of-type(1) {
+  flex-grow: 5;
+}
+
+.criterion-title {
+  font-weight: 600;
+}
+
+.criterion-delete-btn {
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #c90101;
+}
+
+.criterion-delete-btn i {
+  display: block;
+  line-height: 1;
+}
+
+.other-criteria-element {
+  display: none;
+}
+
+.other-factors-value {
+  font-weight: 700;
+}

@@ -1,0 +1,35 @@
+* {
+  font-family: 'DM Sans', sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  background: rgb(0, 132, 162);
+  background: radial-gradient(circle, #0084a2 0%, rgb(0, 38, 47) 100%);
+  background-repeat: no-repeat;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.deactivated {
+  color: #27505a;
+  background-color: #568894;
+}
+
+.error-outline {
+  border: 3px solid #ce0000;
+}
+
+.error-text {
+  color: #ce0000;
+}
+
+.error-bg {
+  background-color: #ff8b8b;
+}

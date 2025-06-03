@@ -1,0 +1,35 @@
+.dialog-element {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-window {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  color: #000;
+  padding: 1rem;
+  height: min-content;
+  border-radius: 0.5rem;
+  width: 25vw;
+  text-align: justify;
+}
+
+.dialog-window span:first-child {
+  background-color: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #005366;
+}
+
+@media only screen and (max-width: 600px) {
+  .dialog-window {
+    width: 80%;
+  }
+}

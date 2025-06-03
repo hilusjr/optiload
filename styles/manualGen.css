@@ -1,0 +1,46 @@
+.manual-gen-section {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.manual-gen-window {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  color: #000;
+  padding: 1rem;
+  height: min-content;
+  border-radius: 0.5rem;
+  width: 25vw;
+}
+
+.manual-gen-window > span:first-child {
+  background-color: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #005366;
+}
+
+.manual-gen-window > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .manual-gen-section {
+    align-items: end;
+  }
+  .manual-gen-window {
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+}

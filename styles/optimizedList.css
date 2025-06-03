@@ -1,0 +1,88 @@
+.optimized-list {
+  position: relative;
+  max-width: 80rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+.optimized-list-header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: inherit;
+  padding: 1rem 1rem 0 1rem;
+  z-index: 1;
+  border-radius: 1rem 1rem 0 0;
+  border-bottom: 3px #005366 solid;
+  -webkit-box-shadow: 0px 10px 12px -7px rgba(169, 169, 169, 1);
+  -moz-box-shadow: 0px 10px 12px -7px rgba(169, 169, 169, 1);
+  box-shadow: 0px 10px 12px -7px rgba(169, 169, 169, 1);
+}
+
+.optimized-list-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #005366;
+}
+
+.optimized-list-header-desc {
+  color: #000;
+}
+
+.optimized-list-elements {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+}
+
+.optimized-list-elements > div:nth-child(2n) {
+  background-color: #aecdd4;
+}
+
+.optimized-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.5rem 1rem;
+}
+.optimized-list-item > div {
+  width: 20%;
+}
+
+.optimized-list-item > div:last-child {
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+  .warehouse-container {
+    align-items: end;
+  }
+  .warehouse-card {
+    max-height: 90vh;
+  }
+  .warehouse-header {
+    -webkit-box-shadow: 0px 15px 13px -11px rgba(66, 68, 90, 0.5);
+    -moz-box-shadow: 0px 15px 13px -11px rgba(66, 68, 90, 0.5);
+    box-shadow: 0px 15px 13px -11px rgba(66, 68, 90, 0.5);
+  }
+  .stock-info-label {
+    display: none;
+  }
+  .package-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  .package-item > div {
+    width: 100%;
+  }
+
+  .package-item div:nth-child(n + 2) {
+    text-align: right;
+  }
+}

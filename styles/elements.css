@@ -1,0 +1,56 @@
+input {
+  padding: 1rem;
+  border: 3px solid #86a6ad;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+input:focus {
+  border: 3px solid #005366;
+}
+
+button {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #005366;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+select {
+  padding: 1rem;
+  border: 3px solid #86a6ad;
+  border-radius: 0.5rem;
+  outline: none;
+  font-weight: 700;
+}
+
+select:focus {
+  border: 3px solid #005366;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #aecdd4;
+  border-radius: 1rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #005366;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0090b1;
+}
