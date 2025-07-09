@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" href="../img/logo.png" />
+
+    <link rel="stylesheet" href="../styles/optimizedList.css" />
+    <link rel="stylesheet" href="../styles/utilities.css" />
+    <link rel="stylesheet" href="../styles/mainContainer.css" />
+    <link rel="stylesheet" href="../styles/manualGen.css" />
+    <link rel="stylesheet" href="../styles/warehouse.css" />
+    <link rel="stylesheet" href="../styles/criteria.css" />
+    <link rel="stylesheet" href="../styles/dialog.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/elements.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Racing+Sans+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../script/spaceOptimizationMain.js" defer></script>
+    <script src="../script/cargoSpaceLogic.js" defer></script>
+
+    <title>OptiLoad</title>
+  </head>
+  <body>
+    <img class="logo" src="../img/logotext.svg" />
+
+    <div class="space-optimization main-container">
+      <div class="main-label">Cargo space optimization</div>
+      <div class="main-container-content">
+        <span> This is the final process of optimization. </span>
+        <span
+          >At this stage, the list of packages has been optimized and indicates
+          which ones are more beneficial to load onto the vehicle. To complete
+          the process, the user must specify the vehicle's properties so that
+          the algorithm can perform cargo space optimization calculations.</span
+        >
+      </div>
+    </div>
+
+    <div class="cargo-space-dimensions main-container">
+      <div class="main-label">Cargo space dimensions</div>
+      <div class="main-container-content">
+        <span
+          >Enter the dimensions of the available cargo space. Please note that
+          this tool is currently not capable of performing calculations that
+          account for curved or skewed vehicle walls. Therefore, the dimensions
+          must represent a cuboid-shaped space.
+        </span>
+        <span>Length [cm]</span>
+        <input
+          type="number"
+          class="cargo-space-length-in"
+          placeholder="ex. 200"
+        />
+        <span>Width [cm]</span>
+        <input
+          type="number"
+          class="cargo-space-width-in"
+          placeholder="ex. 100"
+        />
+        <span>Height [cm]</span>
+        <input
+          type="number"
+          class="cargo-space-height-in"
+          placeholder="ex. 150"
+        />
+      </div>
+    </div>
+
+    <div class="load-weight main-container">
+      <div class="main-label">Load weight</div>
+      <div class="main-container-content">
+        <span
+          >Enter the maximum allowed weight. Note that this value refers only to
+          the weight of the load and does not include the vehicle's own weight.
+          The user is responsible for adjusting the load weight accordingly to
+          comply with legal requirements and account for the vehicle's weight.
+        </span>
+        <span>Maximum allowed weight [t]</span>
+        <input type="number" class="max-weight-in" placeholder="ex. 2,5" />
+      </div>
+    </div>
+
+    <div class="optimize-load main-container">
+      <div class="main-label">Optimize load</div>
+      <div class="main-container-content">
+        <span
+          >Once all required data has been entered, the final optimization
+          process can begin. Press the button below to start the calculations
+          and run the package placement simulation.
+        </span>
+        <button class="main-btn begin-optimization-btn">begin</button>
+      </div>
+    </div>
+
+    <div class="log-element">
+      <div class="log-window">
+        <span>Optimization log</span>
+        <span
+          >The optimization is in progress. Please wait — the final result will
+          be loaded automatically upon completion.</span
+        >
+        <div class="log-content">
+          <div>
+            ✅ The reorder of packages to be loaded has been succesfully
+            completed.
+          </div>
+        </div>
+        <button class="main-btn proceed-to-results">results</button>
+      </div>
+    </div>
+
+    <footer>
+      <img
+        class="uni-images"
+        src="../img/uni-img-light.svg"
+        alt="Logo of the West Pomeranian University of Technology in Szczecin"
+      />
+      <div>
+        <a href="https://www.facebook.com/hilusjr" target="_blank">
+          <i class="bx bxl-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/hilusjr/" target="_blank">
+          <i class="bx bxl-instagram"></i>
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UC2PIHyXB5T_gE8LUYC00BYg"
+          target="_blank"
+        >
+          <i class="bx bxl-youtube"></i>
+        </a>
+        <a href="https://github.com/hilusjr" target="_blank">
+          <i class="bx bxl-github"></i>
+        </a>
+      </div>
+      <p>project OptiLoad | &copy; 2025 hilusjr</p>
+    </footer>
+  </body>
+</html>

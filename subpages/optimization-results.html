@@ -7,6 +7,7 @@
 
     <link rel="icon" type="image/x-icon" href="../img/logo.png" />
 
+    <link rel="stylesheet" href="../styles/simRender.css" />
     <link rel="stylesheet" href="../styles/optimizedList.css" />
     <link rel="stylesheet" href="../styles/utilities.css" />
     <link rel="stylesheet" href="../styles/mainContainer.css" />
@@ -32,55 +33,54 @@
       rel="stylesheet"
     />
 
-    <script src="../script/optimizedList.js" defer></script>
+    <script src="../script/spaceOptimizationMain.js" defer></script>
+    <script src="../script/cargoSpaceLogic.js" defer></script>
+    <script src="../script/results.js" defer></script>
 
     <title>OptiLoad</title>
   </head>
   <body>
     <img class="logo" src="../img/logotext.svg" />
 
-    <div class="optimized-list-proceed main-container">
-      <div class="main-label">
-        Package selection optimization was successful
-      </div>
+    <div class="optimization-results main-container">
+      <div class="main-label">Optimization results</div>
       <div class="main-container-content">
-        <span> The optimization of package selection was successful. </span>
         <span
-          >First optimization process was completed. Below is optimized list
-          presenting reordered packages based in their individual
-          priority.</span
+          >The optimization process was completed successfully and the results
+          are now available.</span
         >
-        <span
-          >When ready, please proceed to final optimization process that will
-          focus on selecting packages to be loaded on vehicle.</span
+        <span>
+          The following optimization results include details on which packages
+          were successfully loaded and which could not be placed onto the
+          vehicle.</span
         >
-        <button class="main-btn proceed-to-final">proceed</button>
       </div>
     </div>
 
-    <div class="optimized-list">
-      <div class="optimized-list-header-container">
-        <span class="optimized-list-header"
-          >List of packages based on optimization results</span
-        >
-        <span class="optimized-list-header-desc"
-          >This list of packages is ordered according to their priority values.
-          A priority value is computed using an objective function and reflects
-          the relative attractiveness of each package. It represents how
-          beneficial it is to include a given package for loading, based on the
-          user's defined preferences.
-        </span>
-        <div class="stock-info-label">
-          <span>Package</span>
-          <span>Dimensions</span>
-          <span>Weight</span>
-          <span>Remaining time</span>
-          <span>Distance</span>
-          <span>Priority value</span>
-        </div>
+    <div class="main-container">
+      <div class="main-label">Successfully placed packages</div>
+      <div class="main-container-content">
+        <div class="successfully-placed-list"></div>
       </div>
-      <div class="optimized-list-elements"></div>
     </div>
+
+    <div class="optimization-render main-container">
+      <div class="main-label">Optimization render</div>
+      <div class="main-container-content">
+        <span
+          >This is visualization of how packages have been placed in cargo space
+          on the vehicle.</span
+        >
+        <span>Use mouse to rotate view of loaded packages.</span>
+        <iframe
+          class="sim-render"
+          src="simulation-render.html"
+          frameborder="0"
+        ></iframe>
+        <button class="main-btn open-render">fullscreen view</button>
+      </div>
+    </div>
+
     <footer>
       <img
         class="uni-images"

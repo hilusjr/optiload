@@ -54,3 +54,7 @@ select:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #0090b1;
 }
+
+.proceed-to-results {
+  display: none;
+}

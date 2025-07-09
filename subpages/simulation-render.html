@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D Cargo Space Visualization</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #ui {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      #ui label {
+        font-size: 14px;
+      }
+      #ui button {
+        font-size: 14px;
+        padding: 4px 10px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background: #f2f2f2;
+        border-radius: 4px;
+      }
+      .zoom {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        cursor: pointer;
+      }
+    </style>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="ui">
+      <label><input type="checkbox" id="toggleLabels" /> Show labels</label>
+      <div class="zoom">
+        <div id="zoomIn" class="zoom-btn">
+          <i class="bx bx-search-plus"></i>
+        </div>
+        <div id="zoomOut" class="zoom-btn">
+          <i class="bx bx-search-minus"></i>
+        </div>
+      </div>
+    </div>
+    <canvas id="renderCanvas"></canvas>
+
+    <script>
+      const canvas = document.getElementById('renderCanvas')
+      const engine = new BABYLON.Engine(canvas, true)
+      const labelCheckbox = document.getElementById('toggleLabels')
+
+      let camera
+
+      const createScene = function () {
+        const scene = new BABYLON.Scene(engine)
+        scene.clearColor = new BABYLON.Color3(0.95, 0.95, 0.95)
+
+        const spaceParams = JSON.parse(sessionStorage.getItem('spaceParams'))
+        const placedPackages =
+          JSON.parse(sessionStorage.getItem('successfullyPlacedPackages')) || []
+
+        const center = new BABYLON.Vector3(
+          spaceParams.width / 2,
+          spaceParams.height / 2,
+          spaceParams.length / 2
+        )
+
+        const boundingSize = Math.max(
+          spaceParams.width,
+          spaceParams.height,
+          spaceParams.length
+        )
+
+        camera = new BABYLON.ArcRotateCamera(
+          'Camera',
+          -Math.PI / 2,
+          Math.PI / 2.5,
+          boundingSize * 2.2,
+          center,
+          scene
+        )
+        camera.attachControl(canvas, true)
+        camera.inputs.removeByType('ArcRotateCameraMouseWheelInput')
+
+        const hemiLight = new BABYLON.HemisphericLight(
+          'hemiLight',
+          new BABYLON.Vector3(1, 1, 0),
+          scene
+        )
+        hemiLight.intensity = 1
+
+        const gui = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI')
+        const labelMap = new Map()
+
+        const container = BABYLON.MeshBuilder.CreateBox(
+          'container',
+          {
+            width: spaceParams.width,
+            height: spaceParams.height,
+            depth: spaceParams.length,
+          },
+          scene
+        )
+
+        container.position = center
+        container.visibility = 0.05
+        container.enableEdgesRendering()
+        container.edgesWidth = 20.0
+        container.edgesColor = new BABYLON.Color4(0, 0, 0, 1)
+
+        const containerMat = new BABYLON.StandardMaterial('containerMat', scene)
+        containerMat.diffuseColor = new BABYLON.Color3(1, 1, 1)
+        containerMat.emissiveColor = new BABYLON.Color3(1, 1, 1)
+        containerMat.disableLighting = true
+        container.material = containerMat
+
+        placedPackages.forEach(pkg => {
+          const dims = pkg.dimensions
+          const pos = pkg.position
+
+          const box = BABYLON.MeshBuilder.CreateBox(
+            `pkg-${pkg.id}`,
+            {
+              width: dims.width,
+              height: dims.height,
+              depth: dims.length,
+            },
+            scene
+          )
+
+          box.position = new BABYLON.Vector3(
+            pos.y + dims.width / 2,
+            pos.z + dims.height / 2,
+            pos.x + dims.length / 2
+          )
+
+          const material = new BABYLON.StandardMaterial(`mat-${pkg.id}`, scene)
+          const color = new BABYLON.Color3(
+            Math.random(),
+            Math.random(),
+            Math.random()
+          )
+          material.diffuseColor = color
+          material.emissiveColor = color
+          material.disableLighting = true
+          box.material = material
+
+          // Label
+          const label = new BABYLON.GUI.Rectangle()
+          label.background = 'white'
+          label.height = '20px'
+          label.alpha = 0.5
+          label.width = '30px'
+          label.cornerRadius = 3
+          label.thickness = 1
+          label.isVisible = labelCheckbox.checked
+          label.isPointerBlocker = false
+
+          const text = new BABYLON.GUI.TextBlock()
+          text.text = `${pkg.id}`
+          text.color = 'black'
+          text.fontSize = '12px'
+          label.addControl(text)
+
+          gui.addControl(label)
+          label.linkWithMesh(box, true)
+          label.linkOffsetY = -50
+
+          labelMap.set(pkg.id, label)
+        })
+
+        labelCheckbox.addEventListener('change', () => {
+          const show = labelCheckbox.checked
+          labelMap.forEach(label => (label.isVisible = show))
+        })
+
+        return scene
+      }
+
+      const scene = createScene()
+
+      // Zoom button functionality
+      document.getElementById('zoomIn').addEventListener('click', () => {
+        if (camera.radius > 1) camera.radius *= 0.7
+      })
+
+      document.getElementById('zoomOut').addEventListener('click', () => {
+        camera.radius *= 1.3
+      })
+
+      engine.runRenderLoop(() => {
+        scene.render()
+      })
+
+      window.addEventListener('resize', () => {
+        engine.resize()
+      })
+    </script>
+  </body>
+</html>

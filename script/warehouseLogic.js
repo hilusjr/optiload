@@ -8,11 +8,11 @@ const deleteStockBtn = document.querySelector('.delete-stock-btn')
 
 const packages = []
 const dimensions = [
-  { width: 100, length: 100, height: 100 },
-  { width: 200, length: 200, height: 200 },
-  { width: 300, length: 300, height: 300 },
-  { width: 400, length: 400, height: 400 },
-  { width: 500, length: 500, height: 500 },
+  { width: 100, length: 200, height: 100 },
+  { width: 300, length: 400, height: 200 },
+  { width: 150, length: 300, height: 200 },
+  { width: 400, length: 500, height: 300 },
+  { width: 500, length: 800, height: 350 },
 ]
 
 let isStockGenerated = false

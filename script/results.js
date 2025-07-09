@@ -1,11 +1,22 @@
-const optimizedListElements = document.querySelector('.optimized-list-elements')
-const proceedToFinal = document.querySelector('.proceed-to-final')
+const openRender = document.querySelector('.open-render')
+const successfullyPlacedList = document.querySelector(
+  '.successfully-placed-list'
+)
+
 const packages = JSON.parse(sessionStorage.getItem('packages'))
+const successfullyPlacedPackages = JSON.parse(
+  sessionStorage.getItem('successfullyPlacedPackages')
+)
+const failedToPlace = JSON.parse(sessionStorage.getItem('failedToPlace'))
+
+openRender.addEventListener('click', () => {
+  window.location.href = 'simulation-render.html'
+})
 
 window.addEventListener('load', () => {
-  packages.forEach(pkg => {
+  successfullyPlacedPackages.forEach(pkg => {
     const pkgElement = document.createElement('div')
-    pkgElement.classList.add('optimized-list-item')
+    pkgElement.classList.add('package-item')
 
     const packageLabel = document.createElement('div')
     packageLabel.textContent = `Package #${pkg.id}`
@@ -24,20 +35,12 @@ window.addEventListener('load', () => {
     const distanceLabel = document.createElement('div')
     distanceLabel.textContent = `${pkg.distance} km`
 
-    const objVal = document.createElement('div')
-    objVal.textContent = pkg.objectiveValue
-
     pkgElement.appendChild(packageLabel)
     pkgElement.appendChild(dimensionsLabel)
     pkgElement.appendChild(weightLabel)
     pkgElement.appendChild(daysLeftLabel)
     pkgElement.appendChild(distanceLabel)
-    pkgElement.appendChild(objVal)
 
-    optimizedListElements.appendChild(pkgElement)
+    successfullyPlacedList.appendChild(pkgElement)
   })
-})
-
-proceedToFinal.addEventListener('click', () => {
-  window.location.href = 'space-optimization.html'
 })
