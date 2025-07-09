@@ -1,0 +1,30 @@
+.summary-label {
+  display: flex;
+  background-color: white;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.results-packages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.results-package-item {
+  display: flex;
+  width: 48rem;
+  justify-content: space-between;
+  background-color: #c5e0e6;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+}
+
+.results-package-item > div {
+  width: 16.5%;
+  min-width: fit-content;
+}

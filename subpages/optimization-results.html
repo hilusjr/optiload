@@ -7,6 +7,7 @@
 
     <link rel="icon" type="image/x-icon" href="../img/logo.png" />
 
+    <link rel="stylesheet" href="../styles/results.css" />
     <link rel="stylesheet" href="../styles/simRender.css" />
     <link rel="stylesheet" href="../styles/optimizedList.css" />
     <link rel="stylesheet" href="../styles/utilities.css" />
@@ -33,8 +34,6 @@
       rel="stylesheet"
     />
 
-    <script src="../script/spaceOptimizationMain.js" defer></script>
-    <script src="../script/cargoSpaceLogic.js" defer></script>
     <script src="../script/results.js" defer></script>
 
     <title>OptiLoad</title>
@@ -57,15 +56,23 @@
       </div>
     </div>
 
-    <div class="main-container">
-      <div class="main-label">Successfully placed packages</div>
+    <div class="optimization-summary main-container">
+      <div class="main-label">Optimization summary</div>
       <div class="main-container-content">
-        <div class="successfully-placed-list"></div>
+        <span
+          >Here is a short summary of the optimization process. These are the
+          end results after optimizing loading packages onto a vehicle.</span
+        >
+        <div class="packages-label summary-label"></div>
+        <div class="successfully-label summary-label"></div>
+        <div class="failed-label summary-label"></div>
+        <div class="weight-label summary-label"></div>
+        <div class="volume-label summary-label"></div>
       </div>
     </div>
 
     <div class="optimization-render main-container">
-      <div class="main-label">Optimization render</div>
+      <div class="main-label">Optimization visualization</div>
       <div class="main-container-content">
         <span
           >This is visualization of how packages have been placed in cargo space
@@ -78,6 +85,20 @@
           frameborder="0"
         ></iframe>
         <button class="main-btn open-render">fullscreen view</button>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="main-label">Successfully placed packages</div>
+      <div class="main-container-content">
+        <div class="successfully-placed-list results-packages-list"></div>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="main-label">Packages failed to be loaded</div>
+      <div class="main-container-content">
+        <div class="failed-list results-packages-list"></div>
       </div>
     </div>
 
