@@ -1,6 +1,7 @@
 const optimizedListElements = document.querySelector('.optimized-list-elements')
 const proceedToFinal = document.querySelector('.proceed-to-final')
 const packages = JSON.parse(sessionStorage.getItem('packages'))
+const utilityParams = JSON.parse(sessionStorage.getItem('utilityParams'))
 
 window.addEventListener('load', () => {
   packages.forEach(pkg => {

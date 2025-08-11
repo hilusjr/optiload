@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>3D Cargo Space Visualization</title>
+    <link rel="icon" type="image/x-icon" href="../img/logo.png" />
+
+    <title>OptiLoad Visualization</title>
     <style>
       html,
       body {
@@ -87,7 +89,7 @@
 
         const spaceParams = JSON.parse(sessionStorage.getItem('spaceParams'))
         const placedPackages =
-          JSON.parse(sessionStorage.getItem('successfullyPlacedPackages')) || []
+          JSON.parse(sessionStorage.getItem('placedPackages')) || []
 
         const center = new BABYLON.Vector3(
           spaceParams.width / 2,

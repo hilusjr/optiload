@@ -5,7 +5,6 @@ const titleToPropertyMap = {
   Weight: 'weight',
   Distance: 'distance',
   'Remaining delivery time': 'daysLeft',
-  // Add more mappings as needed
 }
 
 packageSelectionBtn.addEventListener('click', () => {
@@ -13,11 +12,13 @@ packageSelectionBtn.addEventListener('click', () => {
   calculateObjectiveFunctionValue()
   packages.sort((a, b) => b.objectiveValue - a.objectiveValue)
   sessionStorage.setItem('packages', JSON.stringify(packages))
+  sessionStorage.setItem('criteria', JSON.stringify(criteria))
+  sessionStorage.setItem('utilityParams', JSON.stringify(utilityParams))
   window.location.href = 'subpages/optimized-selection.html'
 })
 
 function calculateUtilityFunctionValue() {
-  const increasingUtilityCriteria = ['Volume', 'Weight', 'Distance'] // customize based on your case
+  const increasingUtilityCriteria = ['Volume', 'Weight', 'Distance']
 
   packages.forEach(pkg => {
     pkg.utilityValues = {} // store results per criterion
@@ -26,7 +27,7 @@ function calculateUtilityFunctionValue() {
       const title = criterion.title
       const property = titleToPropertyMap[title]
       const value = pkg[property] // e.g., pkg.weight for "Weight"
-      const maxValue = utilityParams[title]?.maxValue || 1
+      const maxValue = utilityParams[title]?.maxValue || 100
       const exponent = utilityParams[title]?.exponent || 1
       const isIncreasing = increasingUtilityCriteria.includes(title)
 

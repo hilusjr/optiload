@@ -8,7 +8,7 @@ const distanceInput = document.querySelector('.gen-distance-in')
 const amountInput = document.querySelector('.gen-amount-in')
 
 const inputs = [
-  { el: weightInput, max: 30, key: 'weightManGen' },
+  { el: weightInput, max: 10, key: 'weightManGen' },
   { el: timeInput, max: 14, key: 'timeManGen' },
   { el: distanceInput, max: 30, key: 'distanceManGen' },
   { el: amountInput, max: Infinity, key: 'amountManGen' },
@@ -40,7 +40,7 @@ manualGenBtn.addEventListener('click', () => {
   })
 })
 
-dimensionsSelect.addEventListener('change', () => {
+dimensionsSelect.addEventListener('click', () => {
   const selectedIndex = dimensionsSelect.selectedIndex
   manualGenData.dimensionsManGen = dimensions[selectedIndex]
 })

@@ -6,10 +6,11 @@ const successfullyPlacedList = document.querySelector(
 const failedToPlaceList = document.querySelector('.failed-list')
 
 const packages = JSON.parse(sessionStorage.getItem('packages'))
-const successfullyPlacedPackages = JSON.parse(
-  sessionStorage.getItem('successfullyPlacedPackages')
-)
+const criteria = JSON.parse(sessionStorage.getItem('criteria'))
+const spaceParams = JSON.parse(sessionStorage.getItem('spaceParams'))
+const placedPackages = JSON.parse(sessionStorage.getItem('placedPackages'))
 const failedToPlace = JSON.parse(sessionStorage.getItem('failedToPlace'))
+const optimizedPackages = JSON.parse(sessionStorage.getItem('optimizedPackages'))
 
 openRender.addEventListener('click', () => {
   window.location.href = 'simulation-render.html'
@@ -27,27 +28,42 @@ function renderSummary() {
   const failedLabel = document.querySelector('.failed-label')
   const weightLabel = document.querySelector('.weight-label')
   const volumeLabel = document.querySelector('.volume-label')
+  const criteriaInfo = document.querySelector('.criteria-info')
 
   let weight = 0
   let volume = 0
-  successfullyPlacedPackages.forEach(pkg => {
+  const spaceVolume = parseFloat(
+    (
+      (spaceParams.width * spaceParams.height * spaceParams.length) /
+      1000000
+    ).toFixed(2)
+  )
+
+  placedPackages.forEach(pkg => {
     weight += pkg.weight
     volume +=
-      pkg.dimensions.width * pkg.dimensions.length * pkg.dimensions.height
+      (pkg.dimensions.width * pkg.dimensions.length * pkg.dimensions.height) /
+      1000000
+  })
+  volume = Math.round(volume * 100) / 100
+
+  criteria.forEach(criterion => {
+    const criterionElement = document.createElement('div')
+    criterionElement.textContent = `Criterion: ${criterion.title}, criterion weight: ${criterion.value}`
+    criteriaInfo.appendChild(criterionElement)
   })
 
   packagesLabel.textContent = `📦 Packages before optimization: ${packages.length}`
-  successfullyLabel.textContent = `✅ Packages placed onto a vehicle: ${successfullyPlacedPackages.length}`
+  successfullyLabel.textContent = `✅ Packages placed onto a vehicle: ${placedPackages.length}`
   failedLabel.textContent = `❌ Packages failed to be loaded: ${failedToPlace.length}`
   weightLabel.textContent = `⚖️ Weight of the load: ${weight} kg`
-  volumeLabel.textContent = `📐 Volume of occupied cargo space: ${volume} cm³ / ${
-    volume / 1000000
-  } m³`
+  volumeLabel.textContent = `📐 Volume of occupied cargo space: ${volume} m³ / ${spaceVolume} m³ | ~ ${
+    (Math.round((volume / spaceVolume) * 100) / 100) * 100
+  }%`
 }
 
 function renderList(type) {
-  const packagesArray =
-    type === 'success' ? successfullyPlacedPackages : failedToPlace
+  const packagesArray = type === 'success' ? placedPackages : failedToPlace
 
   const listElement =
     type === 'success' ? successfullyPlacedList : failedToPlaceList

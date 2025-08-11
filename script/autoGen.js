@@ -10,8 +10,8 @@ autoGenBtn.addEventListener('click', () => {
       (pickedDimensions.width *
         pickedDimensions.height *
         pickedDimensions.length) /
-      1e6
-    const weight = Math.floor(Math.random() * 25) + 1
+      1e9
+    const weight = Math.floor(Math.random() * 10) + 1
     const daysLeft = Math.floor(Math.random() * 14) + 1
     const distance = Math.floor(Math.random() * 30) + 1
 

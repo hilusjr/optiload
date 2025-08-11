@@ -33,6 +33,7 @@
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
+    <script src="script/loadExample.js" defer></script>
     <script src="script/packageSelection.js" defer></script>
     <script src="script/utilities.js" defer></script>
     <script src="script/criteriaLogic.js" defer></script>
@@ -78,19 +79,62 @@
       <div class="main-label">Introduction</div>
       <div class="main-container-content">
         <span
-          >OptiLoad is a proprietary web application developed as a project to
-          support research for my master's thesis.
+          >OptiLoad is a custom web-based application, developed as a project to
+          support reasearch of my master's thesis.
         </span>
         <span
-          >Its primary functionality involves performing calculations aimed at
-          analyzing the potential for optimizing the selection of packages to be
-          delivered and the utilization of cargo space in a courier company's
-          transport vehicles.</span
+          >The OptiLoad application implements multi-criteria analysis methods,
+          allowing for the evaluation of package attractiveness based on
+          multiple independent criteria and their assigned weight coefficients.
+          Based on the resulting objective function value, packages can be
+          ranked in terms of their usefulness from the entrepreneur's
+          perspective.</span
+        >
+        <span
+          >In the next stage, the application groups packages according to
+          delivery distance, enabling the loading sequence to be organized in a
+          way that maximizes logistical efficiency — packages with more distant
+          delivery addresses are placed deeper within the cargo space. The
+          subsequent stage involves simulating the placement of packages within
+          the vehicle's cargo space, taking into account both geometric
+          constraints and the maximum allowable load weight.</span
+        >
+        <span
+          >The software allows users to generate packages, edit cargo space
+          parameters, select evaluation criteria, and define the corresponding
+          weights and utility function coefficients. The final results of the
+          simulation are presented in the form of a 3D visualization,
+          facilitating the assessment of both the correctness and effectiveness
+          of the proposed loading arrangement.</span
+        >
+        <span
+          >The use of the OptiLoad application enables not only the verification
+          of the theoretical assumptions described in the thesis but also the
+          practical illustration of how the proposed optimization approach
+          operates under conditions close to those found in real-world
+          scenarios.</span
         >
         <span
           >It is not a proper optimization software meant for commercial use by
           any means.</span
         >
+      </div>
+    </div>
+
+    <div class="example main-container">
+      <div class="main-label">Example used in master's thesis</div>
+      <div class="main-container-content">
+        <span
+          >In case you want to recreate the example that was used in thesis
+          without having to input all data yourself, it is possible by simply
+          using the button below.
+        </span>
+
+        <span
+          >Beware that this will skip all the steps required to perform
+          simulation and you will be immidiately redirected to results.</span
+        >
+        <button onclick="loadExampleScenario()">Load Example Scenario</button>
       </div>
     </div>
 

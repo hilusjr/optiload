@@ -40,12 +40,11 @@ beginOptimizationBtn.addEventListener('click', () => {
     distanceBuckets[bucketKey].push(pkg)
   })
 
-  // Filter and sort within buckets
-  const valueThreshold = 0.2
+  // Sort within buckets without filtering out any packages
   Object.keys(distanceBuckets).forEach(bucket => {
-    distanceBuckets[bucket] = distanceBuckets[bucket]
-      .filter(p => p.normValue >= valueThreshold)
-      .sort((a, b) => b.normValue - a.normValue)
+    distanceBuckets[bucket] = distanceBuckets[bucket].sort(
+      (a, b) => b.normValue - a.normValue
+    )
   })
 
   // Flatten and sort buckets by descending distance
