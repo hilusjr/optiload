@@ -163,7 +163,7 @@ async function placePackages(
             currentWeight += pkg.weight
             successfullyPlaced.push(pkg)
             log(
-              `✅ Placed package ${pkg.id} at (${pkg.position.x},${pkg.position.y},${pkg.position.z}) — total weight: ${currentWeight}/${maxWeight} kg`
+              `✅ Placed package #${pkg.id} at (${pkg.position.x},${pkg.position.y},${pkg.position.z}) — total weight: ${currentWeight}/${maxWeight} kg`
             )
             placed = true
             break outer

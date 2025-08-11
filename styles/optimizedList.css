@@ -62,16 +62,15 @@
     padding: 1rem;
   }
   .optimized-list-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-  }
-  .optimized-list-item > div {
-    width: 100%;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
   }
 
-  .optimized-list-item div:nth-child(n + 2) {
-    text-align: right;
+  .optimized-list-item > div {
+    width: auto;
   }
 }
