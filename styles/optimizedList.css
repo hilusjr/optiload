@@ -58,31 +58,20 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .warehouse-container {
-    align-items: end;
+  .optimized-list-header-container {
+    padding: 1rem;
   }
-  .warehouse-card {
-    max-height: 90vh;
-  }
-  .warehouse-header {
-    -webkit-box-shadow: 0px 15px 13px -11px rgba(66, 68, 90, 0.5);
-    -moz-box-shadow: 0px 15px 13px -11px rgba(66, 68, 90, 0.5);
-    box-shadow: 0px 15px 13px -11px rgba(66, 68, 90, 0.5);
-  }
-  .stock-info-label {
-    display: none;
-  }
-  .package-item {
+  .optimized-list-item {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
   }
-  .package-item > div {
+  .optimized-list-item > div {
     width: 100%;
   }
 
-  .package-item div:nth-child(n + 2) {
+  .optimized-list-item div:nth-child(n + 2) {
     text-align: right;
   }
 }

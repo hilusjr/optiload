@@ -28,3 +28,23 @@
   width: 16.5%;
   min-width: fit-content;
 }
+
+@media only screen and (max-width: 600px) {
+  .results-list-container {
+    width: 100%;
+  }
+
+  .results-package-item {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  .results-package-item > div {
+    width: auto;
+    min-width: fit-content;
+  }
+}
