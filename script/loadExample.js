@@ -23,7 +23,7 @@ function loadExampleScenario() {
         'optimizedPackages',
         JSON.stringify(scenario.optimizedPackages)
       )
-      location.href = '/subpages/optimization-results.html'
+      location.href = 'subpages/optimization-results.html'
     })
     .catch(err => {
       console.error('Error loading scenario:', err)
